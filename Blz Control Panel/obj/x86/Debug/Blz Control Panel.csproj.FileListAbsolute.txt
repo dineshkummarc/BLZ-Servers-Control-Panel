@@ -1,0 +1,9 @@
+C:\Users\blz\documents\visual studio 2010\Projects\Blz Control Panel\Blz Control Panel\bin\Debug\Blz Control Panel.exe
+C:\Users\blz\documents\visual studio 2010\Projects\Blz Control Panel\Blz Control Panel\bin\Debug\Blz Control Panel.pdb
+C:\Users\blz\documents\visual studio 2010\Projects\Blz Control Panel\Blz Control Panel\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\blz\documents\visual studio 2010\Projects\Blz Control Panel\Blz Control Panel\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\blz\documents\visual studio 2010\Projects\Blz Control Panel\Blz Control Panel\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\blz\documents\visual studio 2010\Projects\Blz Control Panel\Blz Control Panel\obj\x86\Debug\Blz Control Panel.exe
+C:\Users\blz\documents\visual studio 2010\Projects\Blz Control Panel\Blz Control Panel\obj\x86\Debug\Blz Control Panel.pdb
+C:\Users\blz\documents\visual studio 2010\Projects\Blz Control Panel\Blz Control Panel\obj\x86\Debug\BlzServersControlPanel.frmControlPanel.resources
+C:\Users\blz\documents\visual studio 2010\Projects\Blz Control Panel\Blz Control Panel\obj\x86\Debug\BlzServersControlPanel.Properties.Resources.resources

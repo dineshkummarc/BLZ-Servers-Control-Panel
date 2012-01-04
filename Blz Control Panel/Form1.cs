@@ -16,7 +16,8 @@ namespace BlzServersControlPanel
         {
             InitializeComponent();
             initServersStatus();
-            notifyIcon.Icon = this.Icon;
+
+            notifyIcon.Icon = TrayIcons.off_off;
 
             Rectangle screenRes = Screen.PrimaryScreen.WorkingArea;
             int left = screenRes.Width - this.Width;
@@ -29,25 +30,41 @@ namespace BlzServersControlPanel
         {
             if (btnApache.Text == "Start")
             {
-                btnApache.Text = "Stop";
-                lblApacheStatus.Text = "Running...";
-                lblApacheStatus.BackColor = System.Drawing.Color.PaleGreen;
-
                 if (!ApacheHandler.isApacheRunning())
                 {
+                    btnApache.Text = "Stop";
+                    lblApacheStatus.Text = "Running...";
+                    lblApacheStatus.BackColor = System.Drawing.Color.PaleGreen;
+                                   
                     ApacheHandler.startApache();
+                    if (MysqlHandler.isMysqlRunning())
+                    {
+                        notifyIcon.Icon = TrayIcons.on_on;
+                    }
+                    else
+                    {
+                        notifyIcon.Icon = TrayIcons.on_off;
+                    }
                     //C:\Development\Apache\bin\httpd.exe -w -f "C:\Development\Apache\conf\httpd.conf" -d "C:\Development\Apache\."
                 }
             }
             else if (btnApache.Text == "Stop")
             {
-                btnApache.Text = "Start";
-                lblApacheStatus.Text = "Stopped...";
-                lblApacheStatus.BackColor = System.Drawing.Color.FromArgb(255, 192, 192);
-
                 if (ApacheHandler.isApacheRunning())
                 {
+                    btnApache.Text = "Start";
+                    lblApacheStatus.Text = "Stopped...";
+                    lblApacheStatus.BackColor = System.Drawing.Color.FromArgb(255, 192, 192);
+                                    
                     ApacheHandler.stopApache();
+                    if (MysqlHandler.isMysqlRunning())
+                    {
+                        notifyIcon.Icon = TrayIcons.off_on;
+                    }
+                    else
+                    {
+                        notifyIcon.Icon = TrayIcons.off_off;
+                    }
                 }
             }
         }
@@ -56,24 +73,40 @@ namespace BlzServersControlPanel
         {
             if (btnMysql.Text == "Start")
             {
-                btnMysql.Text = "Stop";
-                lblMysqlStatus.Text = "Running...";
-                lblMysqlStatus.BackColor = System.Drawing.Color.PaleGreen;
-
                 if (!MysqlHandler.isMysqlRunning())
                 {
+                    btnMysql.Text = "Stop";
+                    lblMysqlStatus.Text = "Running...";
+                    lblMysqlStatus.BackColor = System.Drawing.Color.PaleGreen;
+                                    
                     MysqlHandler.startMysql();
+                    if (ApacheHandler.isApacheRunning())
+                    {
+                        notifyIcon.Icon = TrayIcons.on_on;
+                    }
+                    else 
+                    {
+                        notifyIcon.Icon = TrayIcons.off_on;
+                    }
                 }
             }
             else if (btnMysql.Text == "Stop")
             {
-                btnMysql.Text = "Start";
-                lblMysqlStatus.Text = "Stopped...";
-                lblMysqlStatus.BackColor = System.Drawing.Color.FromArgb(255, 192, 192);
-
                 if (MysqlHandler.isMysqlRunning())
                 {
+                    btnMysql.Text = "Start";
+                    lblMysqlStatus.Text = "Stopped...";
+                    lblMysqlStatus.BackColor = System.Drawing.Color.FromArgb(255, 192, 192);
+
                     MysqlHandler.stopMysql();
+                    if (ApacheHandler.isApacheRunning())
+                    {
+                        notifyIcon.Icon = TrayIcons.on_off;
+                    }
+                    else
+                    {
+                        notifyIcon.Icon = TrayIcons.off_off;
+                    }
                 }
             }
         }
@@ -85,6 +118,7 @@ namespace BlzServersControlPanel
                 btnApache.Text = "Stop";
                 lblApacheStatus.Text = "Running...";
                 lblApacheStatus.BackColor = System.Drawing.Color.PaleGreen;
+                notifyIcon.Icon = TrayIcons.on_off;
             }
 
             if (MysqlHandler.isMysqlRunning())
@@ -92,6 +126,12 @@ namespace BlzServersControlPanel
                 btnMysql.Text = "Stop";
                 lblMysqlStatus.Text = "Running...";
                 lblMysqlStatus.BackColor = System.Drawing.Color.PaleGreen;
+                notifyIcon.Icon = TrayIcons.off_on;
+            }
+
+            if (ApacheHandler.isApacheRunning() && MysqlHandler.isMysqlRunning())
+            {
+                notifyIcon.Icon = TrayIcons.on_on;
             }
         }
 
